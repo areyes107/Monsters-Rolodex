@@ -21,7 +21,7 @@ class App extends Component{
     .then(users => this.setState({ monsters: users}))
   }
 
-  handleChange(e){
+  handleChange = (e) => {
     this.setState({searchField: e.target.value})
   }
 
@@ -30,7 +30,8 @@ class App extends Component{
 
     const { monsters, searchField } = this.state;
     const filteredMonsters = monsters.filter(monster =>
-      monster.name.toLowerCase().includes(searchField.toLowerCase())
+      monster.name.toLowerCase().includes(searchField.toLowerCase()) || 
+      monster.username.toLowerCase().includes(searchField.toLocaleLowerCase())
       )
     return (
       <div className="App">
